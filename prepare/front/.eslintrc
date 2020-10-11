@@ -1,6 +1,6 @@
 {
     "parserOptions": {
-        "ecmaVersion": 2020,
+        "ecmaVersion": 2020, // ecmaVersion 2020을 쓸경우 env 옵션에도 es2020: true 설정으로 맞춤
         "sourceType": "module",
         "ecmaFeatures": {
             "jsx": true
@@ -9,7 +9,7 @@
     "env":{
         "browser": true,
         "node": true,
-        "es6":true,
+        "es2020":true,
     },
     "extends": [
         "eslint:recommended",
