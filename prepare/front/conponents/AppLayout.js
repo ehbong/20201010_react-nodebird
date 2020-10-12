@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Menu, Input, Row, Col } from 'antd';
@@ -13,9 +13,9 @@ const SearchInput = styled(Input.Search)`
 `;
 
 const AppLayout = ({ children }) => {
-  const isLogin = useSelector((state) => {
+  const { isLogin } = useSelector((state) => {
     console.log(state);
-    return state.user.isLogin;
+    return state.user;
   });
   return (
     <div>
