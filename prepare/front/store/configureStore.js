@@ -1,8 +1,18 @@
 // configureStore.js
 import { createWrapper } from 'next-redux-wrapper';
+import { applyMiddleware, compose, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+
+import reducer from '../reducers/index';
 
 const configureStore = () => {
-  const store = createStore(reducer);
+  const middleware = [];
+  // 개발환경일때만 데브툴즈 사용
+  const enhancer =
+    process.env.NODE_ENV === 'production'
+      ? compose(applyMiddleware(...middleware))
+      : composeWithDevTools(applyMiddleware(...middleware));
+  const store = createStore(reducer, enhancer);
   return store;
 };
 
