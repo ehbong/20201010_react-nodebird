@@ -1,6 +1,6 @@
 export const initialState = {
   isLogin: false,
-  user: null,
+  me: null,
   signUpData: {},
   loginData: {},
 };
@@ -20,9 +20,9 @@ export const logoutAction = (data) => {
 export default (state = initialState, action) => {
   switch (action.type) {
     case 'LOG_IN':
-      return { ...state, isLogin: true, user: action.data };
+      return { ...state, isLogin: true, me: action.data };
     case 'LOG_OUT':
-      return { ...state, isLogin: false, user: null };
+      return { ...state, isLogin: false, me: null };
     default:
       return state;
   }
