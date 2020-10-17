@@ -23,14 +23,14 @@ function PostImages({ images }) {
     return (
       <>
         <img
-          width="50%"
+          style={{ width: '50%', display: 'inline-block' }}
           role="presentation"
           src={images[0].src}
           alt={images[0].src}
           onClick={onZoom}
         />
         <img
-          width="50%"
+          style={{ width: '50%', display: 'inline-block' }}
           role="presentation"
           src={images[1].src}
           alt={images[1].src}
