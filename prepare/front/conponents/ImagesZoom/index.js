@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Slick from 'react-slick';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const Overlay = styled.div`
   position: fixed;
@@ -46,8 +46,16 @@ const ImgWrapper = styled.div`
 
   & img {
     margin: 0 auto;
-    max-width: 600px;
     max-height: 750px;
+  }
+`;
+
+const Global = createGlobalStyle`
+  .slick-slide {
+    display: inline-block;
+  }
+  .ant-card-cover {
+    transform: none !important;
   }
 `;
 
@@ -55,6 +63,7 @@ function ImagesZoom({ images, onClose }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   return (
     <Overlay>
+      <Global />
       <Header>
         <h1>상세 이미지</h1>
         <button onClick={onClose}>X</button>
