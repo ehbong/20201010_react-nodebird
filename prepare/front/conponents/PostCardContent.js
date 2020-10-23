@@ -5,6 +5,7 @@ import Link from 'next/link';
 function PostCardContent({ postData }) {
   return (
     <div>
+      {/* 태그 정규식으로 분리  */}
       {postData.split(/(#[^\s#]+)/g).map((v, idx) => {
         if (v.match(/(#[^\s#]+)/g))
           return (
