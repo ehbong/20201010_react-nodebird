@@ -2,11 +2,17 @@
 import { createWrapper } from 'next-redux-wrapper';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import thunkMiddleware from 'redux-thunk';
 
 import reducer from '../reducers/index';
 
+const loggerMiddleware = ({ dispatch, getState }) => (next) => (action) => {
+  console.log(action);
+  return next(action);
+};
+
 const configureStore = () => {
-  const middleware = [];
+  const middleware = [thunkMiddleware, loggerMiddleware];
   // 개발환경일때만 데브툴즈 사용
   const enhancer =
     process.env.NODE_ENV === 'production'
