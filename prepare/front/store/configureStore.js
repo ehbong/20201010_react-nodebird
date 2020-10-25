@@ -7,14 +7,14 @@ import createSagaMiddleware from 'redux-saga';
 import reducer from '../reducers';
 import rootSaga from '../sagas';
 
-const loggerMiddleware = ({ dispatch, getState }) => (next) => (action) => {
-  console.log(action);
-  return next(action);
-};
+// const loggerMiddleware = ({ dispatch, getState }) => (next) => (action) => {
+//   console.log(action);
+//   return next(action);
+// };
 
 const configureStore = () => {
   const sagaMiddleware = createSagaMiddleware();
-  const middleware = [sagaMiddleware, loggerMiddleware];
+  const middleware = [sagaMiddleware];
   // 개발환경일때만 데브툴즈 사용
   const enhancer =
     process.env.NODE_ENV === 'production'
