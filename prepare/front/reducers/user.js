@@ -1,7 +1,22 @@
 export const initialState = {
-  isLogin: false,
-  isLoggingIn: false,
-  isLoggingOut: false,
+  followLoading: false, // 팔로우 시도중
+  followDone: false,
+  followError: null,
+  unfollowLoading: false, // 언팔로우 시도중
+  unfollowDone: false,
+  unfollowError: null,
+  logInLoading: false, // 로그인 시도중
+  logInDone: false,
+  logInError: null,
+  logOutLoading: false, // 로그아웃 시도중
+  logOutDone: false,
+  logOutError: null,
+  signUpLoading: false, // 회원가입 시도중
+  signUpDone: false,
+  signUpError: null,
+  changeNicknameLoading: false, // 닉네임 변경 시도중
+  changeNicknameDone: false,
+  changeNicknameError: null,
   me: null,
   signUpData: {},
   loginData: {},
@@ -42,14 +57,14 @@ export const loginRequestAction = (data) => {
 };
 export const logoutRequestAction = () => {
   return {
-    type: 'LOG_OUT',
+    type: LOG_OUT_REQUEST,
   };
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case LOG_IN_REQUEST:
-      return { ...state, isLoggingIn: true, me: action.data };
+      return { ...state, logInLoading: true, me: action.data };
     case LOG_IN_SUCCESS:
       return {
         ...state,
@@ -58,13 +73,13 @@ export default (state = initialState, action) => {
         me: { ...action.data, nickname: 'messi' },
       };
     case LOG_IN_FAILURE:
-      return { ...state, isLoggingIn: false, me: action.data };
+      return { ...state, logInLoading: false, me: action.data };
     case LOG_OUT_SUCCESS:
-      return { ...state, isLoggingOut: false, isLogin: false, me: null };
+      return { ...state, logInDone: false, isLogin: false, me: null };
     case LOG_OUT_REQUEST:
-      return { ...state, isLoggingOut: true, me: null };
+      return { ...state, logInDone: true, me: null };
     case LOG_OUT_FAILURE:
-      return { ...state, isLoggingOut: false, isLogin: false, me: null };
+      return { ...state, logInDone: false, isLogin: false, me: null };
     default:
       return state;
   }
