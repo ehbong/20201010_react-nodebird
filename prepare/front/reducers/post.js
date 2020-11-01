@@ -66,7 +66,7 @@ const dummyPost = {
   Comments: [],
 };
 
-export default (state = initialState, { type, payload }) => {
+export default (state = initialState, { type }) => {
   switch (type) {
     case ADD_POST_REQUEST:
       return {
