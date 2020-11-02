@@ -37,6 +37,7 @@ export const initialState = {
   imagePaths: [],
   postAdded: false,
 };
+// 액션명 정의
 export const LOAD_POSTS_REQUEST = 'LOAD_POSTS_REQUEST';
 export const LOAD_POSTS_SUCCESS = 'LOAD_POSTS_SUCCESS';
 export const LOAD_POSTS_FAILURE = 'LOAD_POSTS_FAILURE';
