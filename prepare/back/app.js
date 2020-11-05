@@ -1,6 +1,7 @@
 /** @format */
 
 const express = require("express");
+const postRouter = require("./routes/post");
 // express 서버 구동
 const app = express();
 const port = 3065;
@@ -14,19 +15,9 @@ app.get("/api", (req, res) => {
     { id: 3, content: "hello3" },
   ]);
 });
-app.get("/api/post", (req, res) => {
-  res.json([
-    { id: 1, content: "hello" },
-    { id: 2, content: "hello2" },
-    { id: 3, content: "hello3" },
-  ]);
-});
-app.post("/api/post", (req, res) => {
-  res.json([{ id: 1, content: "hello" }]);
-});
-app.delete("/api/post", (req, res) => {
-  res.json([{ id: 1 }]);
-});
+
+// post 연결
+app.use("/post", postRouter);
 
 app.listen(port, () => {
   console.log("서버 실행 중", port);
