@@ -24,6 +24,9 @@ module.exports = (sequelize, DataTypes) => {
       collate: "utf8_general_ci",
     },
   );
-  User.accociate = (db) => {};
+  User.accociate = (db) => {
+    db.User.hasMany(db.Post); // 일대 다 중 일에 해당할때, 다는 belongsTo
+    db.User.hasMany(db.Comment);
+  };
   return User;
 };

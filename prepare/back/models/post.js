@@ -15,6 +15,11 @@ module.exports = (sequelize, DataTypes) => {
       collate: "utf8mb4_general_ci",
     },
   );
-  Post.accociate = (db) => {};
+  Post.accociate = (db) => {
+    db.Post.belongsTo(db.User);
+    db.Post.hasMany(db.Comment);
+    db.Post.hasMany(db.Image);
+    db.Post.belongsToMany(db.Hashtag); // belongsToMany 는 다대다 서로 매칭할 수 있는 임의의 테이블이 생성
+  };
   return Post;
 };
