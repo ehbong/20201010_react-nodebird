@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     db.Post.belongsTo(db.User);
     db.Post.hasMany(db.Comment);
     db.Post.hasMany(db.Image);
+    db.Post.belongsTo(db.Post, { as: "Retweet" }); // 리트윗
     db.Post.belongsToMany(db.Hashtag); // belongsToMany 는 다대다 서로 매칭할 수 있는 임의의 테이블이 생성
     db.Post.belongsToMany(db.User, { through: "Like", as: "Likers" }); // belongsToMany 는 다대다 서로 매칭할 수 있는 임의의 테이블이 생성
   };
