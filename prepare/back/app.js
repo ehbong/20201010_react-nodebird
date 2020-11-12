@@ -2,6 +2,7 @@
 
 const express = require("express");
 const postRouter = require("./routes/post");
+const userRouter = require("./routes/user");
 // express 서버 구동
 const app = express();
 const port = 3065;
@@ -18,6 +19,7 @@ app.get("/api", (req, res) => {
 
 // post 연결
 app.use("/post", postRouter);
+app.use("/user", userRouter);
 
 app.listen(port, () => {
   console.log("서버 실행 중", port);
