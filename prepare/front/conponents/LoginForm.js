@@ -20,7 +20,7 @@ function LoginForm() {
   const [password, onChangePassword] = useInput('');
   const { isLoggingIn } = useSelector((state) => state.user);
 
-  const onSubmitForm = useCallback((e) => {
+  const onSubmitForm = useCallback(() => {
     console.log(email, password);
     dispatch(loginRequestAction({ email, password }));
   });

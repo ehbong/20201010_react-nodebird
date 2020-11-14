@@ -1,5 +1,5 @@
 import AppLayout from '../conponents/AppLayout';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Head from 'next/head';
 import NicknameEditForm from '../conponents/NicknameEditForm';
 import FollowList from '../conponents/FollowList';

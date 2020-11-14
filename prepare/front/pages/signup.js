@@ -35,18 +35,15 @@ const Signup = () => {
     [password],
   );
 
-  const onsubmit = useCallback(
-    (e) => {
-      if (password !== passwordCheck) return setPasswordError(true);
-      if (!term) return setTermError(true);
-      console.log(email, nickname, password);
-      dispatch({
-        type: SIGN_UP_REQUEST,
-        data: { email, password, nickname },
-      });
-    },
-    [password, passwordCheck, passwordError, term],
-  );
+  const onsubmit = useCallback(() => {
+    if (password !== passwordCheck) return setPasswordError(true);
+    if (!term) return setTermError(true);
+    console.log(email, nickname, password);
+    dispatch({
+      type: SIGN_UP_REQUEST,
+      data: { email, password, nickname },
+    });
+  }, [password, passwordCheck, passwordError, term]);
 
   return (
     <>
