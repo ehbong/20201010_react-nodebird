@@ -15,7 +15,7 @@ const FormWrapper = styled(Form)`
 `;
 
 function LoginForm() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
   const { isLoggingIn } = useSelector((state) => state.user);

@@ -2,13 +2,13 @@ import { Input, Button } from 'antd';
 import Form from 'antd/lib/form/Form';
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import useInput from '../hooks/useInput';
 import { addPost } from '../reducers/post';
 
 function postForm() {
   const { imagePaths, addPostDone } = useSelector((state) => state.post);
-  const [text, setText] = useState('');
+  const [text, onChangeText, setText] = useInput('');
   const dispatch = useDispatch();
-  const imageInput = useRef();
 
   useEffect(() => {
     if (addPostDone) {
@@ -20,10 +20,7 @@ function postForm() {
     dispatch(addPost(text));
   }, [text]);
 
-  const onChangeText = useCallback((e) => {
-    setText(e.target.value);
-  }, []);
-
+  const imageInput = useRef();
   const onClickImageUpload = useCallback(() => {
     imageInput.current.click();
   }, [imageInput.current]);
