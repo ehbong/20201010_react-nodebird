@@ -1,3 +1,6 @@
+import shortId from 'shortid';
+import faker from 'faker';
+
 export const initialState = {
   mainPosts: [
     {
@@ -56,16 +59,42 @@ export const ADD_COMMENT_FAILURE = 'ADD_COMMENT_FAILURE';
 
 export const addPost = (data) => ({ type: ADD_POST_REQUEST, data });
 
-const dummyPost = {
+const dummyPost = (data) => ({
   id: 2,
-  content: '더미데이터',
+  content: data,
   User: {
     id: 1,
     nickname: 'messi',
   },
   Images: [],
   Comments: [],
-};
+});
+
+export const generateDummyPost = (number) =>
+  Array(number)
+    .fill()
+    .map(() => ({
+      id: shortId.generate(),
+      User: {
+        id: shortId.generate(),
+        nickname: faker.name.findName(),
+      },
+      content: faker.lorem.paragraph(),
+      Images: [
+        {
+          src: faker.image.image(),
+        },
+      ],
+      Comments: [
+        {
+          User: {
+            id: shortId.generate(),
+            nickname: faker.name.findName(),
+          },
+          content: faker.lorem.sentence(),
+        },
+      ],
+    }));
 
 export default (state = initialState, { type }) => {
   switch (type) {
@@ -78,7 +107,7 @@ export default (state = initialState, { type }) => {
     case ADD_POST_SUCCESS:
       return {
         ...state,
-        mainPosts: [dummyPost, ...state.mainPosts],
+        mainPosts: [dummyPost(action.data), ...state.mainPosts],
         postAdded: true,
       };
     case ADD_POST_FAILURE:
