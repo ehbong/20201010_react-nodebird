@@ -8,7 +8,9 @@ import { ADD_COMMENT_REQUEST } from '../reducers/post';
 function CommentForm({ post }) {
   const dispatch = useDispatch();
   const id = useSelector((state) => state.user.me?.id);
-  const { addCommentDone } = useSelector((state) => state.post);
+  const { addCommentDone, addCommentLoadiing } = useSelector(
+    (state) => state.post,
+  );
   const [commentText, onChangeCommentText, setCommentText] = useInput('');
 
   useEffect(() => {
@@ -36,7 +38,8 @@ function CommentForm({ post }) {
         <Button
           type="primary"
           htmlType="submit"
-          style={{ position: 'absolute', right: 0, bottom: -40 }}
+          style={{ position: 'absolute', right: 0, bottom: -40, zIndex: 1 }}
+          loading={addCommentLoadiing}
         >
           삐약
         </Button>

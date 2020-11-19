@@ -70,6 +70,15 @@ const dummyPost = (data) => ({
   Comments: [],
 });
 
+const dummyComment = (data) => ({
+  id: shortId.generate(),
+  content: data,
+  User: {
+    id: 1,
+    nickname: 'messi',
+  },
+});
+
 export const generateDummyPost = (number) =>
   Array(number)
     .fill()
